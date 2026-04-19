@@ -1,0 +1,40 @@
+### 1. Create or Update Config (Notice the string "ENABLED")
+PUT http://localhost:8080/api/v1/configs/feature.video_playback.cmcd
+Content-Type: application/json
+X-User-Id: dev_avijeet
+
+{
+  "payload": {
+    "cmcd_enabled": true,
+    "buffer_length_ms": 5000,
+    "adaptive_bitrate_strategy": "aggressive"
+  },
+  "apiEndpoint": "/api/v1/player/config",
+  "status": "ENABLED"
+}
+
+### 2. Get Config by Key
+GET http://localhost:8080/api/v1/configs/feature.video_playback.cmcd
+
+### 3. Get All Configs
+GET http://localhost:8080/api/v1/configs
+
+### 4. Generate Diff (Testing a proposed change)
+POST http://localhost:8080/api/v1/configs/feature.video_playback.cmcd/diff
+Content-Type: application/json
+
+{
+  "cmcd_enabled": true,
+  "buffer_length_ms": 8000,
+  "adaptive_bitrate_strategy": "conservative"
+}
+
+### 5. Toggle/Update Status (Using string "DISABLED")
+PATCH http://localhost:8080/api/v1/configs/feature.video_playback.cmcd/status?status=DISABLED
+X-User-Id: dev_avijeet
+
+### 6. Get Audit History (Returns top 3 changes)
+GET http://localhost:8080/api/v1/configs/feature.video_playback.cmcd/history
+
+### 7. Delete Config
+DELETE http://localhost:8080/api/v1/configs/feature.video_playback.cmcd
