@@ -1,7 +1,7 @@
 package com.avijeet.launchpad.application.event;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Builder;
-import tools.jackson.databind.JsonNode;
 
 import java.util.UUID;
 
